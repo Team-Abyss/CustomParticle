@@ -111,12 +111,10 @@ class ParticleCore implements ParticleOperator {
 
     private static List<PictureWriter> writers = new ArrayList<>();
 
-    @Override
     public boolean drawPicture(String name,Location location){
         return drawPicture(name,location,null);
     }
 
-    @Override
     public boolean drawPicture(String name,Location location,Integer width){
         PictureWriter dp = null;
         for (PictureWriter value: writers){
@@ -127,10 +125,10 @@ class ParticleCore implements ParticleOperator {
             }
         }
         if (dp == null){
-            if (width >= 0){
-                dp = PictureWriter.getInstance(name,width);
-            }else {
+            if(width == null){
                 dp = PictureWriter.getInstance(name);
+            }else if (width > 0){
+                dp = PictureWriter.getInstance(name,width);
             }
         }
         if (dp != null){

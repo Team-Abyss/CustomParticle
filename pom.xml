@@ -26,6 +26,7 @@
     </properties>
 
     <build>
+        <finalName>CustomParticle</finalName>
         <defaultGoal>clean package</defaultGoal>
         <plugins>
             <plugin>
