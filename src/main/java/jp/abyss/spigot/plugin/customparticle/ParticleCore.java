@@ -113,21 +113,21 @@ class ParticleCore implements ParticleOperator {
 
     @Override
     public boolean drawPicture(String name,Location location){
-        return drawPicture(name,location,0);
+        return drawPicture(name,location,null);
     }
 
     @Override
-    public boolean drawPicture(String name,Location location,int width){
+    public boolean drawPicture(String name,Location location,Integer width){
         PictureWriter dp = null;
         for (PictureWriter value: writers){
             if (value.getName().equals(name)){
-                if (width == 0 || value.getWidth() == width){
+                if (width == null || value.getWidth() == width){
                     dp = value;
                 }
             }
         }
         if (dp == null){
-            if (width > 0){
+            if (width >= 0){
                 dp = PictureWriter.getInstance(name,width);
             }else {
                 dp = PictureWriter.getInstance(name);
