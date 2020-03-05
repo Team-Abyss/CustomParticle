@@ -42,8 +42,24 @@ class ParticleCore implements ParticleOperator {
 
     @Override
     public void drawTriangle(Particle particle, Location center, double radius, double space, double first) {
-        center.setYaw((float) first);
-        drawPolygon(particle, center, radius, 3, space);
+        Location[] loc = new Location[3];
+        double t0 = first;
+        for(int i = 0;i < 3;i++){
+            double x = radius * Math.cos(t0);
+            double y = 0;
+            double z = radius * Math.sin(t0);
+            loc[0] = new Location(center.getWorld(),center.getX(),center.getY(),center.getZ()).add(x,y,z);
+        }
+        for(int i = 0;i < 3;i++){
+            Location one , two;
+            one = loc[i];
+            if(i != 2) {
+                two = loc[i + 1];
+            }else {
+                two = loc[0];
+            }
+            drawLine(particle,one,two,space);
+        }
     }
 
     @Override
