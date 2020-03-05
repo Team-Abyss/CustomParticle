@@ -1,5 +1,11 @@
 name: CustomParticle
 version: ${project.version}
 main: jp.abyss.spigot.plugin.customparticle.CustomParticle
-api-version: 1.13
+api-version: 1.12.2
 authors: [AbyssMembers]
+
+commands:
+  customparticle:
+    aliases:
+      - cp
+    permission: customparticle
