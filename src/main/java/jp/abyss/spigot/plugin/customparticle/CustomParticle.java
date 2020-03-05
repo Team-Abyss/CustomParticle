@@ -21,13 +21,13 @@ public final class CustomParticle extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info(ChatColor.AQUA +"Booting CustomParticle");
+        getLogger().info("Booting CustomParticle");
         getCommand("customparticle").setExecutor(new ParticleCommand());
         getCommand("picture").setExecutor(new PictureCommand());
     }
 
     @Override
     public void onDisable() {
-        getLogger().info(ChatColor.AQUA + "See You");
+        getLogger().info("See You");
     }
 }
