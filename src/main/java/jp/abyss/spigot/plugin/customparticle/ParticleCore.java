@@ -7,6 +7,9 @@ import org.bukkit.Particle;
 import org.bukkit.World;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class ParticleCore implements ParticleOperator {
 
     @Override
@@ -22,10 +25,8 @@ class ParticleCore implements ParticleOperator {
         Vector v1 = location.getDirection();
 
         Vector v2 = new Vector(Math.cos(rYaw), 0, Math.sin(rYaw));
-
         //角速度ω
         double i = 2 * Math.PI / point;
-
 
         for (int count = 0; count < point; count++) {
 
@@ -106,5 +107,35 @@ class ParticleCore implements ParticleOperator {
     @Override
     public void drawTriangle(Particle particle, Location center, double radius, double space) {
         drawTriangle(particle, center, radius, space, 0);
+    }
+
+    private static List<PictureWriter> writers = new ArrayList<>();
+
+    public static boolean drawPicture(String name,Location location){
+        return drawPicture(name,location,null);
+    }
+
+    public static boolean drawPicture(String name,Location location,Integer width){
+        PictureWriter dp = null;
+        for (PictureWriter value: writers){
+            if (value.getName().equals(name)){
+                if (width == null || value.getWidth() == width){
+                    dp = value;
+                }
+            }
+        }
+        if (dp == null){
+            if (width > 0){
+                dp = PictureWriter.getInstance(name,width);
+            }else {
+                dp = PictureWriter.getInstance(name);
+            }
+        }
+        if (dp != null){
+            dp.draw(location);
+            return true;
+        }else {
+            return false;
+        }
     }
 }

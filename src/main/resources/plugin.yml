@@ -8,4 +8,6 @@ commands:
   customparticle:
     aliases:
       - cp
-    permission: customparticle
+    permission: CustomParticle.customparticle
+  picture:
+    permission: CustomParticle.picture
