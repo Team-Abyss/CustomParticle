@@ -22,7 +22,7 @@ public final class CustomParticle extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info(ChatColor.AQUA +"Booting CustomParticle");
-        getCommand("customeparticle").setExecutor(new ParticleCommand());
+        getCommand("customparticle").setExecutor(new ParticleCommand());
         getCommand("picture").setExecutor(new PictureCommand());
     }
 
