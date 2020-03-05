@@ -45,10 +45,11 @@ class ParticleCore implements ParticleOperator {
         Location[] loc = new Location[3];
         double t0 = first;
         for(int i = 0;i < 3;i++){
+            t0 = t0 + 2 * Math.PI / 3;
             double x = radius * Math.cos(t0);
             double y = 0;
             double z = radius * Math.sin(t0);
-            loc[0] = new Location(center.getWorld(),center.getX(),center.getY(),center.getZ()).add(x,y,z);
+            loc[i] = center.clone().add(x,y,z);
         }
         for(int i = 0;i < 3;i++){
             Location one , two;
