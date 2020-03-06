@@ -149,6 +149,7 @@ class ParticleCore implements ParticleOperator {
         return drawPicture(name, location, width,0.2f);
     }
 
+    @Override
     public boolean drawPicture(String name,Location location,Integer width,Float step){
         PictureWriter dp = null;
         for (PictureWriter value: writers){
