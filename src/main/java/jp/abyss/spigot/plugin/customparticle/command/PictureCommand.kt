@@ -93,7 +93,7 @@ class PictureCommand :CommandExecutor,TabCompleter {
                                 sender.sendMessage("${ChatColor.RED}正確な値を入力してください。")
                                 return false
                             }
-                                    ,args[7].toFloatOrNull() ?: kotlin.run {
+                                    ,args[6].toFloatOrNull() ?: kotlin.run {
                                 sender.sendMessage("${ChatColor.RED}正確な値を入力してください。")
                                 return false
                             })) {
