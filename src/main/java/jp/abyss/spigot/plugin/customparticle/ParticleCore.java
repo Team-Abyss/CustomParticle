@@ -16,7 +16,6 @@ class ParticleCore implements ParticleOperator {
 
     @Override
     public void drawCircle(Particle particle, Location center, double radius, int quantity) {
-        center.setYaw(0);
         center.setPitch(0);
         drawThreeDimensionCircle(particle, center, radius, quantity);
     }
@@ -82,7 +81,6 @@ class ParticleCore implements ParticleOperator {
 
     @Override
     public void drawPolygon(Particle particle, Location location, double radius, int count, double space) {
-        location.setYaw(0);
         location.setPitch(0);
         drawThreeDimensionPolygon(particle, location, radius, count, space);
     }
