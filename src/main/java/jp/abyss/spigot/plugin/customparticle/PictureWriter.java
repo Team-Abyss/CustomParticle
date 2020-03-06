@@ -80,9 +80,7 @@ public class PictureWriter {
         this.image = newImage;
     }
 
-    private float step = 0.2f;
-
-    public void draw(Location location){
+    public void draw(Location location,Float step){
         int height = image.getHeight();
         double radius = Math.toRadians(location.getYaw());
         Vector sideVector = new Vector(Math.cos(radius),0,Math.sin(radius)).multiply(step);

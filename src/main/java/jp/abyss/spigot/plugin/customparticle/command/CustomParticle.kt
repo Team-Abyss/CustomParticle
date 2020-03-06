@@ -38,7 +38,7 @@ class ParticleCommand : CommandExecutor , TabExecutor {
     }
 
     private fun circle(sender: CommandSender, args: Array<String>): Boolean {
-        val operator = CustomParticle.getCustomParticle().operator;
+        val operator = CustomParticle.getCustomParticle().operator
         val message = fun() {
             sender.sendMessage("${ChatColor.RED}使用法:/customparticle[cp] circle <名前> <半径> [x] [y] [z] [yaw] [pitch] [点の数]")
         }
@@ -59,7 +59,7 @@ class ParticleCommand : CommandExecutor , TabExecutor {
                         message()
                         return false
                     }
-                            , args[8].toDoubleOrNull() ?: kotlin.run {
+                            , args[8].toIntOrNull() ?: kotlin.run {
                         message()
                         return false
                     })
@@ -83,7 +83,7 @@ class ParticleCommand : CommandExecutor , TabExecutor {
                             message()
                             return false
                         }
-                                , 16.0)
+                                , 16)
                         return true
                     }
                 }
@@ -96,7 +96,7 @@ class ParticleCommand : CommandExecutor , TabExecutor {
                         , sender.getLocation(), args[2].toDoubleOrNull() ?: kotlin.run {
                     message()
                     return false
-                }, 16.0)
+                }, 16)
                 return true
             }
         } else {
@@ -112,7 +112,7 @@ class ParticleCommand : CommandExecutor , TabExecutor {
         val operator = CustomParticle.getCustomParticle().operator
         when (args.size) {
             4 -> {
-                operator.drawPolygon(toParticle(args[1]) ?: kotlin.run {
+                operator.drawThreeDimensionPolygon(toParticle(args[1]) ?: kotlin.run {
                     message()
                     return false
                 }, sender.getLocation(), args[2].toDoubleOrNull() ?: kotlin.run {
@@ -131,7 +131,7 @@ class ParticleCommand : CommandExecutor , TabExecutor {
             }
 
             9 -> {
-                operator.drawPolygon(
+                operator.drawThreeDimensionPolygon(
                         toParticle(args[1]) ?: kotlin.run {
                             sender.sendMessage("${ChatColor.RED}そのようなパーティクルは存在しません。")
                             return false
