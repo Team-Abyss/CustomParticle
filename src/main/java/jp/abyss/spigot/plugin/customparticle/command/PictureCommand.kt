@@ -19,7 +19,7 @@ class PictureCommand :CommandExecutor,TabCompleter {
 
         when (args.size) {
             0 -> {
-                sender.sendMessage("${ChatColor.RED}使用法:/picture <名前> [x] [y] [z] [yaw] [pitch]")
+                sender.sendMessage("${ChatColor.RED}使用法:/picture <名前> [x] [y] [z] [yaw] [pitch] [間隔] [横のピクセル数]")
                 return false
             }
 
@@ -69,10 +69,31 @@ class PictureCommand :CommandExecutor,TabCompleter {
                     false
                 }
             }
+            7 -> {
+                val location = sender.getLocation()?.fromString(args[1], args[2], args[3], args[4], args[5])
+                return if (location != null) {
+                    if (!operator.drawPicture(args[0], location,null,args[6].toFloatOrNull() ?: kotlin.run {
+                                sender.sendMessage("${ChatColor.RED}正確な値を入力してください。")
+                                return false
+                            })) {
+                        sender.sendMessage("${ChatColor.RED}そのような画像ファイルは存在しません:${args[0]}")
+                        false
+                    } else {
+                        true
+                    }
+                } else {
+                    sender.sendMessage("${ChatColor.RED}正確な値を入力してください。")
+                    false
+                }
+            }
             else -> {
                 val location = sender.getLocation()?.fromString(args[1], args[2], args[3], args[4], args[5])
                 return if (location != null) {
-                    if (!operator.drawPicture(args[0], location,args[6].toIntOrNull() ?: kotlin.run {
+                    if (!operator.drawPicture(args[0], location,args[7].toIntOrNull() ?: kotlin.run {
+                                sender.sendMessage("${ChatColor.RED}正確な値を入力してください。")
+                                return false
+                            }
+                                    ,args[7].toFloatOrNull() ?: kotlin.run {
                                 sender.sendMessage("${ChatColor.RED}正確な値を入力してください。")
                                 return false
                             })) {
