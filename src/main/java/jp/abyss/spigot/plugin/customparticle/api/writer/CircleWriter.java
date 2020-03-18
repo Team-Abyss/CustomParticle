@@ -1,9 +1,9 @@
-package jp.abyss.spigot.plugin.customparticle.core;
+package jp.abyss.spigot.plugin.customparticle.api.writer;
 
 import org.bukkit.Location;
 import org.bukkit.Particle;
 
-public interface DrawCircleAble extends DrawThreeDimensionCircleAble {
+public interface CircleWriter extends ThreeDimensionCircleWriter {
 
     void drawCircle(Particle particle, Location center,double radius,int quantity);
 

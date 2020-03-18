@@ -1,27 +1,27 @@
 package jp.abyss.spigot.plugin.customparticle;
 
+import jp.abyss.spigot.plugin.customparticle.api.CustomParticleAPI;
 import jp.abyss.spigot.plugin.customparticle.command.ParticleCommand;
 import jp.abyss.spigot.plugin.customparticle.command.PictureCommand;
-import jp.abyss.spigot.plugin.customparticle.core.ParticleOperator;
+import jp.abyss.spigot.plugin.customparticle.api.ParticleWriter;
+import jp.abyss.spigot.plugin.customparticle.writer.ImplParticleWriter;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class CustomParticle extends JavaPlugin {
+public final class CustomParticle extends JavaPlugin implements CustomParticleAPI {
 
-    public static CustomParticle getCustomParticle(){
-        return (CustomParticle) Bukkit.getServer().getPluginManager().getPlugin("CustomParticle");
+    public static CustomParticleAPI getCustomParticleAPI(){
+        return (CustomParticleAPI) getPlugin();
     }
 
     public static Plugin getPlugin(){
         return Bukkit.getPluginManager().getPlugin("CustomParticle");
     }
 
-    private ParticleOperator operator = new ParticleCore();
-
-    public ParticleOperator getOperator() {
-        return operator;
+    @Override
+    public ParticleWriter getParticleWriter() {
+        return ImplParticleWriter.getParticleWriter();
     }
 
     @Override
@@ -35,4 +35,5 @@ public final class CustomParticle extends JavaPlugin {
     public void onDisable() {
         getLogger().info("See You");
     }
+
 }

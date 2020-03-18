@@ -1,18 +1,28 @@
-package jp.abyss.spigot.plugin.customparticle;
+package jp.abyss.spigot.plugin.customparticle.writer;
 
-import jp.abyss.spigot.plugin.customparticle.core.ParticleOperator;
+import jp.abyss.spigot.plugin.customparticle.PictureWriter;
+import jp.abyss.spigot.plugin.customparticle.api.ParticleWriter;
 import org.apache.commons.lang.Validate;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
 import org.bukkit.util.Vector;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-class ParticleCore implements ParticleOperator {
+public class ImplParticleWriter implements ParticleWriter {
+
+    private static ParticleWriter particleWriter = null;
+
+    public static ParticleWriter getParticleWriter() {
+        if(particleWriter == null){
+            particleWriter = new ImplParticleWriter();
+        }
+        return particleWriter;
+    }
+
+    private ImplParticleWriter(){}
 
     @Override
     public void drawCircle(Particle particle, Location center, double radius, int quantity) {
