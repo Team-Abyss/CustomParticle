@@ -45,7 +45,7 @@ public abstract class CommandBaseExecutor implements TabExecutor {
         }
     }
 
-    protected Location convertStringToLocation(String[] params, Location origin) throws IllegalArgumentException {
+    protected Location convertStringToLocation(String[] params, Location origin) {
         Location location = origin.clone();
         if (params.length == 5) {
             location.setX(replaceString(params[0], location.getX()));
@@ -63,11 +63,12 @@ public abstract class CommandBaseExecutor implements TabExecutor {
         return location;
     }
 
-    private double replaceString(String word, double origin) throws NumberFormatException {
+    private double replaceString(String word, double origin) {
         if (word.startsWith("~")) {
+            if (word.equalsIgnoreCase("~")) return origin;
             return (origin + Double.parseDouble(word.replace("~", "")));
         } else {
-            return Double.parseDouble(word.replace("~", ""));
+            return Double.parseDouble(word);
         }
     }
 

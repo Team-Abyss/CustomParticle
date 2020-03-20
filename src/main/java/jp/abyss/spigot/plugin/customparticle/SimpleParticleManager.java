@@ -53,11 +53,11 @@ public class SimpleParticleManager implements ParticleManager {
     @Override
     public ThreeDimensionCircle createThreeDimensionCircle(Particle particle, Location location, double radius, int point) {
         Double[] result = pointOfThreeDimensionCircle(location.getYaw(), location.getPitch(), radius, point);
-        CircleEntity circleEntity = new CircleEntity(location, radius, point);
+        CircleEntity circleEntity = new CircleEntity(location.clone(), radius, point);
 
         for (int count = 0; count < point; count++) {
             location.add(result[count * 3], result[count * 3 + 1], result[count * 3 + 2]);
-            circleEntity.addPoint(createPoint(particle, location));
+            circleEntity.addPoint(createPoint(particle, location.clone()));
             location.subtract(result[count * 3], result[count * 3 + 1], result[count * 3 + 2]);
         }
         return circleEntity;
