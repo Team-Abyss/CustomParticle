@@ -6,7 +6,4 @@
 
 **.idea や .imlはコミットに含めない(srcとpom.xmlのみ変更してOK)** 
 
-# JavaDoc 
-
-https://team-abyss.github.io/CustomParticle/
-
+[JavaDoc](https://team-abyss.github.io/CustomParticle/) 
