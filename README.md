@@ -1,6 +1,6 @@
-~~裏グループ~~ プログラミング部門 
-チーム名 Abyss 
-開発コード CustomParticle 
+~~裏グループ~~ プログラミング部門  
+チーム名 Abyss   
+開発コード CustomParticle  
 
 **持ち出し厳禁** 
 
